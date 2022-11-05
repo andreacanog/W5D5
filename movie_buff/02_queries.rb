@@ -8,7 +8,7 @@ end
 
 def bad_years
   # List the years in which no movie with a rating above 8 was released.
-  Movie 
+  Movie
     .group(:yr)
     .having('MAX(score) <= 8')
     .pluck(:yr)
@@ -16,8 +16,10 @@ end
 
 def cast_list(title)
   # List all the actors for a particular movie, given the title.
-  # Sort the results by starring order (ord). Show the actor id and name.
-
+  # Sort the results by starting order (ord). Show the actor id and name.
+  Actor
+  .select(:id, :name)
+  .joins(:movies)
 end
 
 def vanity_projects
