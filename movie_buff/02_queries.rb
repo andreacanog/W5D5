@@ -8,7 +8,10 @@ end
 
 def bad_years
   # List the years in which no movie with a rating above 8 was released.
-  
+  Movie 
+    .group(:yr)
+    .having('MAX(score) <= 8')
+    .pluck(:yr)
 end
 
 def cast_list(title)
